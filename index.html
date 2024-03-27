@@ -10,8 +10,11 @@
         <div class="container">
             <div div="row">
                 <div div="col">
-                    <h1 class="mt-5 mb-4">Sietes por años</h1>
-                    <table class="table table-striped">
+                    <h1 class="mt-5 mb-4">Sietes por años:</h1>
+
+                    <h2>Total por año</h2>
+
+                   <table class="table table-striped">
                         <tr>
                             <td>2010</td>
                             <td id="diez"></td>
@@ -78,6 +81,10 @@
                             <td></td>
                         </tr>
                     </table>
+
+                    <h2 class="my-5">Total por Profes</h2>
+
+                    <address></address>
                 </div>
             </div>
         </div>
@@ -104,6 +111,12 @@
 
             const picto = "◈";
             var datos;
+
+            //esto es nuevo, no se asusten:
+
+            var profes = [];
+            var profesOK = [];
+            const olimpo = document.querySelector("address");
 
             Papa.parse("https://raw.githubusercontent.com/profesorfaco/dno097-2024/main/clase-04/sietes.csv", {
                 download: true,
@@ -142,7 +155,20 @@
                             veintidos.innerHTML += picto;
                         }
 
+
+                        profes.push(x.tutor);
                     });
+
+
+                    console.log(profes);
+
+                    profesOK = [...new Set(profes)];
+
+                    profesOK.sort();
+
+                    console.log(profesOK);
+
+                    olimpo.innerHTML = "Acá irían los profes… ";
                 },
             });
         </script>
